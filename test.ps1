@@ -17,6 +17,9 @@ if ($count){
     $counter = $(echo $myList | measure).Count
     Write-Host $counter
     }
-
-
+if ($image){
+    $myURL = Invoke-RestMethod "$dogserver/breed/$breed/images/random" | Select-Object -Property 'message' -ExpandProperty message
+    Invoke-WebRequest $myURL -OutFile 'D:\test.jpg' 
+    }
+   
 
